@@ -1,0 +1,140 @@
+/* Custom CSS to match the design aesthetics */
+
+/* 1. Set a clean, modern font for the whole body */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #ffffff; 
+}
+
+/* 2. Style the main heading for a bolder, darker look */
+.display-5.fw-bold {
+    letter-spacing: -0.02em;
+    font-size: 2.5rem; 
+    color: #212529; 
+}
+
+/* 3. Style the paragraph text (lead) */
+.lead {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #495057; 
+}
+
+/* 4. Constrain the maximum width of the main content container */
+.container {
+    max-width: 1000px; 
+}
+
+/* --- CSS for FIXED Image Positioning (Kept) --- */
+
+/* 1. The Container: Locks the image to the viewport (Browser Window) */
+.fixed-image-container {
+    position: fixed; /* KEY: Locks it relative to the browser window */
+    bottom: 0;       /* Locks it to the bottom edge */
+    right: 0;        /* Locks it to the right edge */
+    
+    /* Define the size of the visible window/crop area */
+    width: 50vw;     
+    height: 90vh;    
+    
+    overflow: hidden; /* Crucial: Hides everything that spills out (the cropping effect) */
+    z-index: -1;      /* Puts the image *behind* your text and navbar */
+}
+
+/* 2. The Image: Scales and shifts the image inside the container */
+.hero-image-fixed {
+    position: absolute; /* Positioned relative to its fixed container */
+    
+    /* Zoom/Scale */
+    transform: scale(1); 
+    
+    /* Shift the image to show the desired quadrant */
+    top: 25%; 
+    right: -25%;
+    
+    /* Reset and ensure responsiveness */
+    transform-origin: top right;
+    width: auto;
+    max-width: none;
+    height: 100%; 
+}
+
+/* Add this rule to the bottom of your main.css */
+/* Targets the main container of your Hero section */
+.container.mt-5 {
+    /* Use a large padding-top value to push the content down dramatically */
+    padding-top: 10rem !important; 
+    
+    /* Ensure the top margin is still present, or adjust the container class */
+    margin-top: 0 !important; /* Optional: We rely on padding now, so remove the default mt-5 margin */
+}
+
+/* Update your existing body rule in main.css */
+body {
+    /* Use the imported IBM Plex Mono font for the entire body */
+    font-family: 'IBM Plex Mono', monospace; 
+    background-color: #ffffff;
+}
+
+/* Also ensure your heading uses the new font */
+.display-5.fw-bold {
+    /* Set the heading to use the monospace font */
+    font-family: 'IBM Plex Mono', monospace; 
+    letter-spacing: -0.02em;
+    font-size: 2.5rem; 
+    color: #212529; 
+}
+
+
+/* Styling for the contact card border */
+.p-5.border {
+    border-color: rgba(0, 0, 0, 0.1) !important; /* Extremely faint gray border */
+}
+
+/* Add this to main.css */
+a {
+    color: #212529; /* A dark black/off-black color */
+    text-decoration: none; /* Removes the default underline */
+    transition: color 0.3s; /* Optional: adds a smooth color transition on hover */
+}
+
+/* Optional: Add a subtle hover effect */
+a:hover {
+    color: #6c757d; /* Changes color slightly to gray on hover */
+    text-decoration: underline; /* Optional: Brings back the underline on hover */
+}
+
+/* Add this to static/main.css */
+.push-left {
+    /* Adjust this value (e.g., -50px) until the text starts exactly where you want it */
+    margin-left: -50px !important; 
+}
+
+/* Media Query for Mobile/Tablet Screens (up to 767px wide) */
+@media (max-width: 767px) {
+    
+    /* 1. Add Space (Margin Bottom) and Underline to Headings */
+    .col-md-3 h4,
+    .col-md-3 h5,
+    .col-md-3 h6 {
+        /* Add significant space (margin) below the heading (e.g., 1.5rem) */
+        margin-bottom: 1.5rem !important;
+        
+        /* Add the faint underline beneath the heading */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+        
+        /* Add a small amount of padding to separate the text from the new line */
+        padding-bottom: 0.5rem; 
+        
+        /* Ensure the title uses the full width of its column */
+        width: 100%; 
+    }
+    
+    /* 2. Remove the margin-top fix applied earlier, as alignment isn't the issue on mobile */
+    .col-md-3 h4,
+    .col-md-3 h5,
+    .col-md-3 h6 {
+        /* Allow the default top margin back for better vertical rhythm on mobile */
+        margin-top: initial !important; 
+    }
+}
